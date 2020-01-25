@@ -25,4 +25,5 @@ export const Center = styled.ul`
   display: flex;
   align-self: center;
   align-items: center;
+  padding-top: 30px;
 `;

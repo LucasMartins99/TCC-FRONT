@@ -1,20 +1,21 @@
 import React, { useState, useEffect, useMemo } from "react";
 import api from "../../services/api";
+import { Link } from "react-router-dom";
 import {
   MdCreate,
   MdFiberNew,
   MdChevronLeft,
   MdChevronRight
 } from "react-icons/md";
-import pt from 'date-fns/locale/pt';
+import pt from "date-fns/locale/pt";
 import { EventList, Container } from "./styles";
 import { format, subMonths, addMonths } from "date-fns";
 
 export default function Main() {
   const [events, setEvents] = useState([]);
   const [date, setDate] = useState(new Date());
-  const dateFormated = useMemo(() => format(date, 'MMMM', {locale: pt}),[
-    date,
+  const dateFormated = useMemo(() => format(date, "MMMM", { locale: pt }), [
+    date
   ]);
   useEffect(() => {
     async function loadEvents() {
@@ -56,12 +57,14 @@ export default function Main() {
                 </div>
                 <span>Editar Evento</span>
               </button>
-              <button className="newButton" type="button">
-                <div>
-                  <MdFiberNew size={19} color="#FFF" />
-                </div>
-                <span>Novo Evento</span>
-              </button>
+              <Link to="/create-event">
+                <button className="newButton" type="button">
+                  <div>
+                    <MdFiberNew size={19} color="#FFF" />
+                  </div>
+                  <span>Novo Evento</span>
+                </button>
+              </Link>
             </div>
           </li>
         ))}
