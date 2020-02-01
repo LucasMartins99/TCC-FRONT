@@ -8,7 +8,7 @@ export const Container = styled.header`
   justify-content: space-between;
   align-items: center;
 `;
-export const Cart = styled(Link)`
+export const Cart = styled.div`
   margin-right: 30px;
   display: flex;
   align-items: center;

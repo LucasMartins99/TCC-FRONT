@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import api from "../../services/api";
+import history from "../../services/history";
 import { Link } from "react-router-dom";
 import {
   MdCreate,
@@ -33,6 +34,7 @@ export default function Main() {
   function handlePrevMonth() {
     setDate(subMonths(date, 1));
   }
+
   return (
     <Container>
       <header>
@@ -46,12 +48,17 @@ export default function Main() {
       </header>
       <EventList>
         {events.map(e => (
-          <li key={events.id}>
+          <li key={e.id}>
             <img src={e.File.url} alt={e.id} />
             <strong>{e.attraction}</strong>
             <span>{e.name}</span>
             <div>
-              <button type="button" onClick={() => this.handleEditEvent(e.id)}>
+              <button
+                type="button"
+                onClick={() => {
+                  history.push(`/update-event/${e.id}`);
+                }}
+              >
                 <div>
                   <MdCreate size={19} color="#FFF" />
                 </div>

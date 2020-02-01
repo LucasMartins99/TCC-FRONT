@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { Form } from "@rocketseat/unform";
 import { toast } from "react-toastify";
 import api from "../../../services/api";
@@ -89,24 +88,31 @@ function CreateEvent(props) {
     const { avatar_id } = data;
     const date = format(date2, "yyyy/MM/dd", { locale: pt });
     const hours = format(hours2, "H:m");
+    const aux = format(hours2, "yyyy/MM/dd H:m:s", { locale: pt });
+    if (avatar_id === undefined) {
+      avatar_id = 1;
+    }
+
     try {
-      const response = await api.post("events", {
+      await api.post("events", {
         name,
         attraction,
         description,
         date,
         hours,
+        aux,
         valuepistaf,
         valuepistam,
         valuecamarotef,
         valuecamarotem,
+        lote,
         avatar_id
       });
+
+      toast.success("evento cadastrado com sucesso");
     } catch (err) {
       toast.error("Falha ao cadastrar revise os dados");
     }
-    toast.success("evento cadastrado com sucesso");
-    history.push("/main");
   }
   const { classes } = props;
   const [name, setName] = useState("");
@@ -118,6 +124,7 @@ function CreateEvent(props) {
   const [valuepistam, setValuepistam] = useState("00,00");
   const [valuecamarotef, setValuecamarotef] = useState("00,00");
   const [valuecamarotem, setValuecamarotem] = useState("00,00");
+  const [lote, setLote] = useState("1");
 
   return (
     <Container>
@@ -182,7 +189,6 @@ function CreateEvent(props) {
                 label="Valor pista feminino"
                 value={valuepistaf}
                 onChange={handlePistaFem}
-                id="formatted-numberformat-input"
                 InputProps={{
                   inputComponent: NumberFormatCustom
                 }}
@@ -191,7 +197,6 @@ function CreateEvent(props) {
                 label="Valor camarote feminino"
                 value={valuecamarotef}
                 onChange={handleCamaroteFem}
-                id="formatted-numberformat-input"
                 InputProps={{
                   inputComponent: NumberFormatCustom
                 }}
@@ -202,7 +207,6 @@ function CreateEvent(props) {
                 label="Valor pista masculino"
                 value={valuepistam}
                 onChange={handlePistaMasc}
-                id="formatted-numberformat-input"
                 InputProps={{
                   inputComponent: NumberFormatCustom
                 }}
@@ -211,7 +215,6 @@ function CreateEvent(props) {
                 label="Valor camarote masculino"
                 value={valuecamarotem}
                 onChange={handleCamaroteMasc}
-                id="formatted-numberformat-input"
                 InputProps={{
                   inputComponent: NumberFormatCustom
                 }}

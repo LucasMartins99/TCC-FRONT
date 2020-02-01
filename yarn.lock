@@ -893,22 +893,17 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
-"@date-io/core@1.x":
+"@date-io/core@1.x", "@date-io/core@^1.3.13":
   version "1.3.13"
   resolved "https://registry.yarnpkg.com/@date-io/core/-/core-1.3.13.tgz#90c71da493f20204b7a972929cc5c482d078b3fa"
   integrity sha512-AlEKV7TxjeK+jxWVKcCFrfYAk8spX9aCyiToFIiLPtfQbsjmRGLIhb5VZgptQcJdHtLXo7+m0DuurwFgUToQuA==
 
-"@date-io/core@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-0.0.2.tgz#35be27d26eb652e752ccfbffe624c95169200dbd"
-  integrity sha512-rkanRee2Agpw3tZLaCGJxkNRzi7FdyqueQDmEZAgZfIQaPo0MoOrO0gcTGwhTNREV8+OBKiZLpbaHK79dsU/Wg==
-
-"@date-io/date-fns-old@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@date-io/date-fns-old/-/date-fns-old-0.0.2.tgz#33858745f65d10b0b2f81703e0a2dd360f1f5c93"
-  integrity sha512-Y1dcbK/Dk/D6FyX5QTya3lAvW6Gs6W6x6MT5vREO5zWyqFNvH/uX/I5c3fHbf9U7FQYQH/mKAfT0UrAiTZuRvA==
+"@date-io/date-fns@1.3.13":
+  version "1.3.13"
+  resolved "https://registry.yarnpkg.com/@date-io/date-fns/-/date-fns-1.3.13.tgz#7798844041640ab393f7e21a7769a65d672f4735"
+  integrity sha512-yXxGzcRUPcogiMj58wVgFjc9qUYrCnnU9eLcyNbsQCmae4jPuZCDoIBR21j8ZURsM7GRtU62VOw5yNd4dDHunA==
   dependencies:
-    "@date-io/core" "^0.0.2"
+    "@date-io/core" "^1.3.13"
 
 "@emotion/hash@^0.7.4":
   version "0.7.4"
@@ -3554,6 +3549,11 @@ data-urls@^1.0.0, data-urls@^1.1.0:
     abab "^2.0.0"
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
+
+date-fns-tz@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/date-fns-tz/-/date-fns-tz-1.0.9.tgz#71ca33b5b471f6cef71d6c1ec7365e7e0b47b412"
+  integrity sha512-5VOe9FBMwhb3LjGttJhrxdgf6WrVwzu9HEU1H4KgJYAclt0UABmQhE/5jUaDsH7qktihxd22xF8zl6BChAYTAw==
 
 date-fns@^2.0.1, date-fns@^2.8.1:
   version "2.9.0"
@@ -9193,6 +9193,11 @@ react-error-overlay@^6.0.4:
   version "6.0.4"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.4.tgz#0d165d6d27488e660bc08e57bdabaad741366f7a"
   integrity sha512-ueZzLmHltszTshDMwyfELDq8zOA803wQ1ZuzCccXa1m57k1PxSHfflPD5W9YIiTXLs0JTLzoj6o1LuM5N6zzNA==
+
+react-hook-form@^4.7.1:
+  version "4.7.1"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-4.7.1.tgz#bc53aeb6725767bac8125c5139b254e17dcb33dd"
+  integrity sha512-AG5O3vs1Hh86Ky7BEbDAm3Hpc+nAHjkR5NTnE7B+XdSrtRJJSH4+zzSVzXKjBYRnZC2etGldXPEg5g8FGJD97A==
 
 react-icons@^3.8.0:
   version "3.8.0"

@@ -9,6 +9,7 @@ import Main from "../pages/Main/index";
 import CreateEvent from "../pages/Evento/Create/index";
 import UpdateEvent from "../pages/Evento/Update/index";
 
+
 export default function Routes() {
   return (
     <Switch>
@@ -16,7 +17,7 @@ export default function Routes() {
       <Route path="/register" component={CreateUser} isPrivate />
       <Route path="/main" component={Main} isPrivate />
       <Route path="/create-event" component={CreateEvent} isPrivate />
-      <Route path="/update-event" component={UpdateEvent} isPrivate />
+      <Route path="/update-event/:id" component={UpdateEvent} isPrivate />
     </Switch>
   );
 }
