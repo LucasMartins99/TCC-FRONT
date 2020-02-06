@@ -4948,6 +4948,11 @@ generic-pool@~2.0.2:
   resolved "https://registry.yarnpkg.com/generic-pool/-/generic-pool-2.0.4.tgz#f9718deda82fa125ed5c43e341c9a215a766d9a3"
   integrity sha1-+XGN7agvoSXtXEPjQcmiFadm2aM=
 
+gerador-validador-cpf@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/gerador-validador-cpf/-/gerador-validador-cpf-4.0.1.tgz#aa85d784eafbf53dbfbc55df21865f8c9a840518"
+  integrity sha512-zEkH2+mB2RSwYUBq8GDE/wL+uZD9Y5lS9SNLLNkc8arE7NkABRwTkKqhjLlwYGre1e2MzxdLFcN1hxiKxzjJ8g==
+
 get-caller-file@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"

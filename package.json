@@ -17,6 +17,7 @@
     "date-fns-tz": "^1.0.9",
     "eslint-config-airbnb": "^18.0.1",
     "formik-material-ui": "^2.0.0-alpha.3",
+    "gerador-validador-cpf": "^4.0.1",
     "history": "^4.10.1",
     "immer": "^5.1.0",
     "persist": "^0.2.7",

@@ -10,7 +10,7 @@ import {
 } from "react-icons/md";
 import pt from "date-fns/locale/pt";
 import { EventList, Container } from "./styles";
-import { format, subMonths, addMonths } from "date-fns";
+import { format, subMonths, addMonths, startOfMonth, getISOWeek, endOfMonth } from "date-fns";
 
 export default function Main() {
   const [events, setEvents] = useState([]);
@@ -18,16 +18,31 @@ export default function Main() {
   const dateFormated = useMemo(() => format(date, "MMMM", { locale: pt }), [
     date
   ]);
+  const firstDay = startOfMonth(date);
+  const lastDay = endOfMonth(date);
+ 
+  const firstDayFormat = useMemo(() => format(firstDay, 'yyyy-MM-dd',{locale: pt}),[
+    firstDay
+  ]);
+  const lastDayFormat = useMemo(()=> format(lastDay, 'yyyy-MM-dd', {locale: pt}), [
+    lastDay
+  ]);
+  
+
   useEffect(() => {
     async function loadEvents() {
-      const response = await api.get("/events");
+      const response = await api.get("/event-month", {
+        params: {firstDayFormat, lastDayFormat}
+      });
       const data = response.data.map(event => ({
         ...event
       }));
       setEvents(data);
     }
     loadEvents();
-  }, []);
+  }, [firstDayFormat, lastDayFormat]);
+  console.log(events);
+  
   function handleNextMonth() {
     setDate(addMonths(date, 1));
   }

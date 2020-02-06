@@ -208,7 +208,7 @@ function CreateEvent(props) {
       const response = await api.get(`/event-filter/${id}`);
 
       setName(response.data.name);
-      setAttraction(response.data.name);
+      setAttraction(response.data.attraction);
       setValuecamarotef(response.data.valuecamarotef);
       setValuecamarotem(response.data.valuecamarotem);
       setValuepistaf(response.data.valuepistaf);

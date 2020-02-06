@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
@@ -7,7 +7,19 @@ import Select from "@material-ui/core/Select";
 import { Container, Center } from "./styles";
 import { withStyles } from "@material-ui/core";
 import { useForm } from "react-hook-form";
-
+import { cpfMask } from "../../components/CpfMask";
+import { toast } from "react-toastify";
+import api from "../../services/api";
+import * as Yup from "yup";
+const schema = Yup.object().shape({
+  name: Yup.string().required("O nome é obrigatorio"),
+  email: Yup.string()
+    .email("Insira um email válido")
+    .required("O e-mail é obrigatorio"),
+  password: Yup.string()
+    .min(4, "No mínimo 4 caracteres")
+    .required("A senha é obrigatória")
+});
 const styles = theme => ({
   root: {
     "& .MuiTextField-root": {
@@ -16,8 +28,8 @@ const styles = theme => ({
     }
   },
   button2: {
-    paddingTop: 40,
-    paddingLeft: 247
+    paddingTop: 35,
+    paddingLeft: 87
   },
   card: {
     background: "#F0EFEF",
@@ -31,9 +43,29 @@ const styles = theme => ({
 });
 
 function CreateUser(props) {
+  const handleCPF = event => {
+    setCpf(cpfMask(event.target.value));
+  };
   const { classes } = props;
-  const { register, errors, handleSubmit } = useForm();
-  function onSubmit() {}
+  const [cpf, setCpf] = useState();
+  const { register, errors, handleSubmit } = useForm({
+    validationSchema: schema
+  });
+  async function onSubmit(data) {
+    const { name, email, password, type } = data;
+    try {
+      await api.post("users", {
+        name,
+        email,
+        password,
+        type,
+        cpf
+      });
+      toast.success("usuario cadastrado com sucesso");
+    } catch (err) {
+      toast.error("Falha ao cadastrar revise os dados");
+    }
+  }
   return (
     <Container>
       <header>
@@ -49,31 +81,30 @@ function CreateUser(props) {
                 inputRef={register}
                 name="name"
               />
+              {errors.name && <p>{errors.name.message}</p>}
             </div>
             <div>
               <TextField
                 id="standard-basic"
                 label="E-mail"
+                name="email"
                 inputRef={register}
               />
+              {errors.email && <p>{errors.email.message}</p>}
             </div>
             <div>
               <TextField
                 id="standard-basic"
                 label="Senha"
+                name="password"
+                type="password"
                 inputRef={register}
               />
+              {errors.password && <p>{errors.password.message}</p>}
             </div>
-            <TextField
-              type="number"
-              label="CPF"
-              name="CPF"
-              inputRef={register({ required: "CPF OBRIGATORIO", minLength: 11 })}
-            />
+            <TextField label="CPF" name="CPF" value={cpf} onChange={handleCPF} />
             <div>
-              <div>
-            {errors.CPF && errors.CPF.message}
-            </div>
+              <div>{errors.CPF && errors.CPF.message}</div>
               <Select
                 className={classes.select}
                 variant="outlined"
@@ -85,9 +116,16 @@ function CreateUser(props) {
                 <option value="promoter">Promoter</option>
               </Select>
             </div>
-            <Button className={classes.button2} type="submit">
-              Enviar
-            </Button>
+            <div className={classes.button2}>
+              <Button
+                variant="outlined"
+                color="primary"
+                size="large"
+                type="submit"
+              >
+                Cadastrar
+              </Button>
+            </div>
           </form>
         </Card>
       </Center>
