@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import "react-toastify/dist/ReactToastify.css";
+import fundo from '../assests/images/fundo.jpg';
 
 export default createGlobalStyle`::after
 *{
@@ -12,7 +13,8 @@ html, border-style, #root {
     min-height: 100%;
 }
 body {
-    background-color: #290571;
+    
+    background-image: url(${fundo});
     -webkit-font-smoothing: antialiased !important;
 }
 

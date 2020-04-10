@@ -1,14 +1,12 @@
 /* eslint-disable import/prefer-default-export */
 import styled from "styled-components";
 import { darken } from "polished";
-import fundo from "../../../assests/images/fundo.jpg";
+
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url(${fundo});
-
   height: 700px;
 `;
 

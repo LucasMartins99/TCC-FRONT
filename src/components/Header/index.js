@@ -21,7 +21,7 @@ export default function Header() {
       <Cart>
         <MdAccountCircle size={49} color="#FFF" />
         <DropdownButton variant="light" alignRight title="USUARIO">
-          <Dropdown.Item href="/create-user">NOVO USUARIO</Dropdown.Item>
+          <Dropdown.Item href="/register">NOVO USUARIO</Dropdown.Item>
           <Dropdown.Item href="/edit-user">EDITAR USUARIO</Dropdown.Item>
           <Dropdown.Item onClick={handleSignOut}>SAIR</Dropdown.Item>
         </DropdownButton>
